@@ -10,9 +10,9 @@ include 'config.php';
 require_once 'helpers.php';
 if(isset($_SESSION['SBUser'])){
     $user_id=$_SESSION['SBUser'];
-    $query=$con->query("SELECT * FROM Admins WHERE Id='$user_id'");
+    $query=$con->query("SELECT * FROM developers WHERE id='$user_id'");
     $user_data=mysqli_fetch_assoc($query);
-    $fn=explode(' ',$user_data['Full_name']);
+    $fn=explode(' ',$user_data['name']);
     $user_data['first']=$fn[0];
     $user_data['last']=$fn[1];
 }

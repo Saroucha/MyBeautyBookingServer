@@ -146,7 +146,7 @@ body {margin:0;font-family:Arial}
       <a href="Clients_abonnes.php">Client abonnées</a>
     </div>
   </div> 
-  <a href="admins.php">Utilisateurs</a>
+  <a href="edit/index.php">Utilisateurs</a>
 <a href="logout.php" style="text-align:right;" >Déconnexion</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
@@ -163,13 +163,13 @@ function myFunction() {
 }
 </script>
 
-<h2 style="margin-top:5%; padding:8px; text-align:center;font-family:Sofia;text-shadow: 0px 6px #fce3dc;">Liste des Professionnels</h2>
+<h2 style="margin-top:5%; padding:8px; text-align:center;font-family:Sofia;text-shadow: 0px 6px #fce3dc;">Liste des Clients</h2>
 
 <table class="table table-bordered table-striped table-condensed" align="center" style="font-family:Brown;align:center;">
 <thead style="Background-color:black; color:white; letter-spacing:2px;"><th></th><th>Nom</th><th>Prénom</th><th>Email</th><th>Phone</th><th>Adresse</th><th>Postale</th><th>Ville</th></thead>
 <tbody>
 <?php 
-$proQuery= $con->query("SELECT `id_client`,`name`,`first_name`,`email`,`phone`,`street`,`zip`,`city` FROM `client`");
+$proQuery= $con->query("SELECT `id`,`name`,`first_name`,`email`,`phone`,`street`,`zip`,`city` FROM `client`");
 
 while($pro=mysqli_fetch_assoc($proQuery)):
 ?>

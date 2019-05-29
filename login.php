@@ -50,14 +50,14 @@ if(isset($_POST['login'])){
     $password = mysqli_real_escape_string($con,$_POST['Password']);
 
 
-    $user ="select * from Admins where Email='$email' AND Password ='$password'";
+    $user ="select * from developers where Address='$email' AND Password ='$password'";
     $query=$con->query($user);
     $check_user = mysqli_fetch_assoc($query);
 
     if($check_user ==0){
         echo"<script>alert('Mot de passe Ou email INCORRECT')</script>";
     }else{
-        $user_id = $check_user['Id'];
+        $user_id = $check_user['id'];
         login($user_id);
         header('Location:index.php');
     }

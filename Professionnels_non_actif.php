@@ -146,7 +146,7 @@ body {margin:0;font-family:Arial}
       <a href="Clients_abonnes.php">Client abonnées</a>
     </div>
   </div> 
-  <a href="admins.php">Utilisateurs</a>
+  <a href="edit/index.php">Utilisateurs</a>
 <a href="logout.php" style="text-align:right;" >Déconnexion</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>

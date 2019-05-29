@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 20, 2019 at 11:47 AM
+-- Generation Time: May 29, 2019 at 09:18 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -25,25 +25,63 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `skills` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `annee` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `adminis`
+--
+
+DROP TABLE IF EXISTS `adminis`;
+CREATE TABLE IF NOT EXISTS `adminis` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Full_name` varchar(250) NOT NULL,
+  `Email` varchar(250) NOT NULL,
+  `Password` varchar(200) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `adminis`
+--
+
+INSERT INTO `adminis` (`Id`, `Full_name`, `Email`, `Password`) VALUES
+(1, 'sarah BOURAHLA\r\n', 'sarah@hotmail.fr', 'sarah1995');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `admins`
 --
 
 DROP TABLE IF EXISTS `admins`;
 CREATE TABLE IF NOT EXISTS `admins` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `Full_name` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Password` varchar(50) NOT NULL,
-  `Permission` varchar(50) NOT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `Password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`Id`, `Full_name`, `Email`, `Password`, `Permission`) VALUES
-(1, 'Sarah BOURAHLA', 'sarah@hotmail.fr', 'sarah1995', 'Supervisor');
+INSERT INTO `admins` (`id`, `Full_name`, `Email`, `Password`) VALUES
+(0, 'Sarah BOURAHLA', 'sarah@hotmail.fr', 'sarah1995'),
+(0, 'Sandra', 'sandra@hotmail.fr', 'sandra');
 
 -- --------------------------------------------------------
 
@@ -99,7 +137,7 @@ INSERT INTO `assem` (`id`, `Nom_pro`, `Email`, `Password`, `Adresse`, `Postale`,
 
 DROP TABLE IF EXISTS `client`;
 CREATE TABLE IF NOT EXISTS `client` (
-  `id_client` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -108,29 +146,50 @@ CREATE TABLE IF NOT EXISTS `client` (
   `street` varchar(255) NOT NULL,
   `zip` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_client`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `client`
 --
 
-INSERT INTO `client` (`id_client`, `name`, `first_name`, `email`, `password`, `phone`, `street`, `zip`, `city`) VALUES
-(3, 'test', 'testy', 'test@hotmail.com', 'test', 'test', 'test', 'test', 'test'),
-(4, 'toto', 'gérard', 'toto@gmail.com', 'toto12345', '222555885', '25 rue machin', '75000', 'paris'),
-(5, 'nek', 'tata', 'titi@hotmail.com', 'test', '00000000000', 'aaaaaaaa', 'aaaaaaa', 'versaille'),
-(12, 'yahya', 'Moh', 'moh@gmail.com', 'moh123456', '02536458', 'rue 45', '92000', 'nanterre'),
+INSERT INTO `client` (`id`, `name`, `first_name`, `email`, `password`, `phone`, `street`, `zip`, `city`) VALUES
 (13, 'sarah', 'sarah', 'sarah@homail.com', 'sarah12345', '123456789', 'paris', '75000', 'paris'),
-(14, 'lilya', 'lil', 'lilya@hotmail.fr', 'jojo1995', '0528781', 'hjdddd', '25220', 'khkdh'),
-(15, 'aaaaaa', 'aaaaaaaa', 'sarah@hotmail.com', 'sarah12345', '4444444444444', 'aaaaaaaaaa', '44444', 'aaaaaaa'),
-(16, 'ttttttttttt', 'tttttttttt', 'aaaaa@aaa.de', 'aaaaaaaaaa', '1111111111111111', 'aaaaaaaaaa', '11111', 'vvvvvvvvv'),
-(17, 'test', 'test', 'testtest@test.com', 'testtest', '444444444', 'test 5555', '44444', 'test'),
-(18, 'BOURAHLA', 'SARAH', 'SAROUCHA@hotmail.com', 'sarah1995,', '068782125', '50 RUE GENERAL', '94240', 'HAY LES ROSES'),
-(19, 'test', 'test', 'marouane@gmail.com', 'marouane', '0254665555', '25 ruee macchin', '25645', 'nanterre'),
-(20, 'Toto', 'sarah', 'saidani@hotmail.fr', 'saidani1995', '06758829', 'CitÃ© 50 ', '91234', 'Palaiseau'),
-(21, 'Ffgg', 'Ccg', 'sarah.bourahla2018@gmail.com', 'saidani1995', '04366275', 'Cotecghhhhh', '93425', 'Fgh'),
-(22, 'Sarah', 'sarah', 'saidi@hotmail.fr', 'saidani1995', '065478946', 'CitÃ© 40 ', '91234', 'Palaiseau'),
-(23, 'Bonjour', 'sarah', 'sarah.bourahla@gmail.com', 'saidani1995', '67777788777', 'Hhjdkdkk', '26272', 'Jjkkkkkk');
+(28, 'tott', 'chloé', 'toto@gmail.com', '25f9e794323b453885f5181f1b624d0b', '0595256535', '', '', 'KKJDKJD'),
+(29, 'dubois', 'francois', 'franc@gmail.com', '25f9e794323b453885f5181f1b624d0b', '062535148', '1 rue de la fontaine', '75012', 'paris'),
+(30, 'Dupond', 'Kevin', 'dupont@gmail.com', '25f9e794323b453885f5181f1b624d0b', '0698768734', '13 Boulevard Perrier', '92000', 'Nanterre'),
+(31, 'Neki', 'nekiniu', 'nek@gmail.com', 'b83ad96560fc732cdae64d4394e962d4', '0652562567', '13 rue test', '92500', 'nanterre'),
+(32, 'neki', 'neki', 'neki@gmail.com', 'b83ad96560fc732cdae64d4394e962d4', '06525352514', '13 eeeeee', '75024', 'paris'),
+(33, 'marc', 'Test', 'marc@gmail.com', 'b0d4b5c947206664901b1f4ad1e8efcb', '0987766667', 'Paris', '75013', 'Pariq');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `developers`
+--
+
+DROP TABLE IF EXISTS `developers`;
+CREATE TABLE IF NOT EXISTS `developers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `skills` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `annee` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `developers`
+--
+
+INSERT INTO `developers` (`id`, `name`, `skills`, `address`, `gender`, `Password`, `annee`) VALUES
+(1, 'Aurore test', 'gog\r\n', 'Aurore@hotmail.com', 'Femme', 'aurore123', 2018),
+(2, 'test test', '', 'test@hotmail.fr', 'Female', 'test', 2019),
+(3, 'Sandra chapenat', '', 'Sandra@gmail.fr', 'female', 'sandraa', 2020),
+(4, 'test test', 'test', 'test2@hotmail.fr', 'female', '12345', 2018),
+(5, 'test5 test', '', 'test5@hotmail.fr', 'male', '123456', 2019),
+(6, 'test7 test', '', 'TEST7@gmail.fr', 'female', '1254', 2015);
 
 -- --------------------------------------------------------
 
@@ -214,21 +273,21 @@ CREATE TABLE IF NOT EXISTS `professionels` (
   `Traite` tinyint(1) NOT NULL,
   `Actif` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `professionels`
 --
 
 INSERT INTO `professionels` (`id`, `NomP`, `Email`, `Password`, `Telephone`, `Categorie`, `image_path`, `image_name`, `Adresse`, `Postale`, `Distance`, `NomEntreprise`, `Registre`, `Description`, `Traite`, `Actif`) VALUES
-(23, 'sarah Bourahla', 'sarah@hotmail.fr', '9e9d7a08e048e9d604b79460b54969c3', '067868447', '', 'http://192.168.43.79/beautybooking/upload/test.jpg', 'sarah Bourahla', 'jkfvjjkkkvjijjkkhjhv', 75349, 110, 'sarah Bourahla', 'kk', 'https://stackoverflow.com/ \r\n\r\nhttps://stackoverflow.com/ \r\n\r\nhttps://stackoverflow.com/ \r\n\r\nhttps://google.com/\r\n\r\n', 1, 0),
-(33, 'sarah Bourahla', 'sarouchazenzouna@gmail.com', '9e9d7a08e048e9d604b79460b54969c3', '0678978302', '', 'http://192.168.43.79/beautybooking/upload/sarah Bourahla.jpg', 'sarah Bourahla', 'Tizi ouzou', 15000, 100, 'BPCE', '12345678912345', 'https://Google.com', 1, 1),
-(32, 'lilya biurahkq', 'lilyabou@gmail.com', '60539e04d8bb5f3aa7f63e383c6940ce', '0678978302', '', 'http://192.168.43.79/beautybooking/upload/lilya biurahkq.jpg', 'lilya biurahkq', 'Tizi ouzou', 15000, 10, 'BPCE', '12345678987654', 'https://Google.com', 1, 1),
-(34, 'sarah Bourahla', 'sarah.bourahla2018@gmail.com', 'f71dbe52628a3f83a77ab494817525c6', '054677478', 'Bien-Ãªtre', 'http://192.168.43.79/beautybooking/upload/sarah Bourahla.jpg', 'sarah Bourahla', 'michelet', 15400, 132, 'sarah Bourahla', '123445556667', 'www.google.fr', 1, 1),
-(35, 'sarah Bourahla', 'sarah.bourahla2018@gmail.com', 'f71dbe52628a3f83a77ab494817525c6', '054677478', 'Onglerie', 'http://192.168.43.79/beautybooking/upload/sarah Bourahla.jpg', 'sarah Bourahla', 'michelet', 15400, 132, 'sarah Bourahla', '123445556667', 'www.google.fr', 1, 1),
-(36, 'tito', 'sarah.bourahla@gmail.com', 'f71dbe52628a3f83a77ab494817525c6', '06557846778', 'Epilation', 'http://192.168.43.79/beautybooking/upload/tito.jpg', 'tito', 'tizi', 15000, 12, 'sarah Bourahla', '12356988966555', 'www.google.fr', 1, 1),
-(37, 'sarah Bourahla', 'sarah.bourahla2018@gmail.com', 'b54bead4c9e8d198837e6a9b2fcbb20d', '+3367878302', 'Epilation', 'http://192.168.43.79/beautybooking/upload/sarah Bourahla.jpg', 'sarah Bourahla', 'paris', 12535, 12, 'sarah Bourahla', '12334568878558', 'www.google.fr', 1, 1),
-(38, 'sarah Bourahla', 'sarah.bourahla2018@gmail.com', 'b54bead4c9e8d198837e6a9b2fcbb20d', '+33678978306', 'Onglerie', 'http://192.168.43.79/beautybooking/upload/sarah Bourahla.jpg', 'sarah Bourahla', 'Paris', 12345, 12, 'daru', '12345678912345', 'www.google.fr', 0, 0);
+(23, 'sarah Bourahla', 'sarah@hotmail.fr', '9e9d7a08e048e9d604b79460b54969c3', '067868447', 'Coiffure', 'http://10.192.133.155/beautybooking/upload/test.jpg', 'sarah Bourahla', 'jkfvjjkkkvjijjkkhjhv', 75349, 110, 'sarah Bourahla', '12345678978125', 'https://stackoverflow.com/ \r\n\r\nhttps://stackoverflow.com/ \r\n\r\nhttps://stackoverflow.com/ \r\n\r\nhttps://google.com/\r\n\r\n', 1, 1),
+(43, 'aurore', 'sandracharpenat@gmail.com', '16d7a4fca7442dda3ad93c9a726597e4', '0698975012', 'Onglerie', 'http://10.192.133.155/beautybooking/upload/aurore.jpg', 'aurore', 'nanterre', 92100, 12, 'cesi', '12345678912345', 'http://www.Google.fr', 1, 1),
+(32, 'lilya biurahkq', 'lilyabou@gmail.com', '60539e04d8bb5f3aa7f63e383c6940ce', '0678978302', 'Onglerie', 'http://10.192.133.155/beautybooking/upload/test.jpg', 'lilya biurahkq', 'Paris', 15000, 10, 'BPCE', '12345678987654', 'https://Google.com', 1, 1),
+(45, 'sarah Bourahla', 'sarah.bourahla2018@gmail.com', 'ec26202651ed221cf8f993668c459d46', '067854354', 'Bien dans son corps', 'http://10.192.133.155/beautybooking/upload/sarah Bourahla.jpg', 'sarah Bourahla', 'paris', 71000, 12, 'sarah Bourahla', '12345678912552', 'http://www.google.fr', 0, 0),
+(41, 'sandra', 'LefÃ¨vre.marc96@gmail.com', 'f40a37048732da05928c3d374549c832', '0836849972', 'Maquillage', 'http://10.192.133.155/beautybooking/upload/sandra.jpg', 'sandra', 'paris', 71000, 12, 'cesi', '12345678912345', 'http://Google.com', 1, 1),
+(42, 'marco', 'lefevre.marc96@gmail.com', '798cd5501c5a5d9a674bf32a9e06a501', '0826883776', 'Maquillage', 'http://10.192.133.155/beautybooking/upload/marco.jpg', 'marco', 'paris', 71000, 12, 'cesi', '12345678912345', 'http://google.fr', 1, 1),
+(44, 'sarah Bourahla', 'sarah.bourahla2018@gmail.com', '46c8a5616e326cc01b573e5d863225be', '097386727', 'Onglerie', 'http://10.192.133.155/beautybooking/upload/sarah Bourahla.jpg', 'sarah Bourahla', 'paris', 71800, 80, 'sarah Bourahla', '12345678987985', 'http://Google.fr', 1, 0),
+(40, 'rrara', 'sarah@gmail.com', '65c7e52b10b19458ff7137d2a5a852f5', '067895863', 'Onglerie', 'http://10.192.133.155/beautybooking/upload/rrara.jpg', 'rrara', 'paris', 71200, 25, 'bpce', '12548521256666', 'http://google.com', 1, 1);
 
 -- --------------------------------------------------------
 

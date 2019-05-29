@@ -12,6 +12,9 @@ if(!is_logged_in()){
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="dist/jquery.tabledit.js"></script>
+<script type="text/javascript" src="custom_table_edit.js"></script>
 </head>
 <body>
 <style>

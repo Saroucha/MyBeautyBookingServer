@@ -161,7 +161,7 @@ body {margin:0;font-family:Arial}
       <a href="Clients_abonnes.php">Client abonnées</a>
     </div>
   </div> 
-  <a href="admins.php">Utilisateurs</a>
+  <a href="edit/index.php">Utilisateurs</a>
 <a href="logout.php" style="text-align:right;" >Déconnexion</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
@@ -181,7 +181,11 @@ function myFunction() {
 <h2 style="margin-top:5%; padding:8px; text-align:center;font-family:Sofia;text-shadow: 0px 6px #fce3dc;">Liste des Professionnels</h2>
 
 <table class="table table-bordered table-striped table-condensed" style="font-family:Brown;">
-<thead style="Background-color:black; color:white; letter-spacing:2px;"><th></th><th>Nom Complet</th><th>Email</th><th>Telephone</th><th>Adresse</th><th>Postale</th><th>Distance</th><th>Entreprise</th><th>Registre</th><th>Description</th><th>Traité</th><th>Actif</th></thead>
+<thead style="Background-color:black; color:white; letter-spacing:2px;"><th></th><th>Nom Complet</th><th>Email</th>
+<th>Telephone</th><th>Adresse</th><th>Postale</th><th>Distance</th>
+<th>Entreprise</th><th>Registre</th><th>Description</th><th>Traité</th>
+<th>Actif</th>
+</thead>
 <tbody>
 <?php 
 $proQuery= $con->query("SELECT `id`,`NomP`,`Email`,`Telephone`,`image_path`,`image_name`,`Adresse`,`Postale`, `Distance`,`NomEntreprise`,`Registre`,`Description`,`Traite`,`Actif` FROM `professionels`");
@@ -200,20 +204,20 @@ while($pro=mysqli_fetch_assoc($proQuery)):
 <td><?=$pro['Registre']; ?></td>
 <td><?=$pro['Description']; ?></td>
 <td>
-<a class="button" href="actif.php?traite_p=<?php echo $pro['id'];?>"><?php if($pro['Traite']==0){
+<a class="button" href="Traite.php?traite_p=<?php echo $pro['id'];?>"><?php if($pro['Traite']==0){
     echo"Non";
 }else{
     echo"Oui";
 }
 ?></a></td>
+<?php if($pro['Traite']==1){ ?>
 <td>
 <a class="button"  href="actif.php?actif_p=<?php echo $pro['id'];?>"><?php if($pro['Actif']==0){
     echo"Non";
 }else{
     echo"Oui";
 }
-
-?></a></td>
+?></a> </td><?php } ?>
 
 <td>
 </tr>
