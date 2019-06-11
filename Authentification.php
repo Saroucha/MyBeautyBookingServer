@@ -26,7 +26,7 @@
 	                     }
 	           echo json_encode(array( "status" => "true","message" => "Login successfully!", "data" => $emparray) );
 	        }else{ 
-	        	echo json_encode(array( "status" => "false","message" => "Invalid username or password!") );
+	        	echo json_encode(array( "status" => "false","message" => "Identifiant ou MDP invalide ou compte inactif!") );
 	        }
 	         mysqli_close($con);
 	 }
